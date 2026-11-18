@@ -1,26 +1,29 @@
-"""Write the front-page image to the output directory.
+#!/usr/bin/env python3
+"""Entry point for the news-image-20261117 make.fun submission.
 
-The image bytes are stored base64-encoded in image.b64 next to this
-file; this program only decodes them and writes them out, so both runs
-produce identical bytes.
+Decodes the bundled base64 image (image.b64, stored next to this file)
+and writes it to /output/entry.png (or $MAKEFUN_OUTPUT_DIR/entry.png).
+Standard library only. Deterministic: the same input always produces
+the same output bytes. The bundled image is a 1024x1024 JPEG.
 """
+
 import base64
 import os
-from pathlib import Path
-
-DATA_FILE = Path(__file__).resolve().parent / "image.b64"
-
-
-def output_path():
-    return Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")) / "entry.png"
+import sys
 
 
 def main():
-    image = base64.b64decode(DATA_FILE.read_text().strip())
-    target = output_path()
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(image)
+    here = os.path.dirname(os.path.abspath(__file__))
+    src = os.path.join(here, "image.b64")
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
+    out_path = os.path.join(out_dir, "entry.png")
+    with open(src, "r", encoding="ascii") as f:
+        data = base64.b64decode(f.read(), validate=True)
+    os.makedirs(out_dir, exist_ok=True)
+    with open(out_path, "wb") as f:
+        f.write(data)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
