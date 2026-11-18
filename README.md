@@ -1,19 +1,17 @@
 # news-image-20261117
 
-[![Competition](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117)
-[![Rank](https://make.fun/badge/news-image-20261117/Wahyukanzuro/news-image-20261117/rank.svg)](https://make.fun/bounty/news-image-20261117)
-[![Reward](https://make.fun/badge/news-image-20261117/Wahyukanzuro/news-image-20261117/reward.svg)](https://make.fun/bounty/news-image-20261117)
+[![news-image-20261117](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117)
+[![rank](https://make.fun/badge/news-image-20261117/Wahyukanzuro/news-image-20261117/rank.svg)](https://make.fun/bounty/news-image-20261117)
+[![reward](https://make.fun/badge/news-image-20261117/Wahyukanzuro/news-image-20261117/reward.svg)](https://make.fun/bounty/news-image-20261117)
 
-A make.fun entry for [news-image-20261117](https://make.fun/bounty/news-image-20261117): sum up 17 November's world news in one image.
+A one-page front page summing up Tuesday 17 November 2026's world news in a single image: 48 stories, 14 illustrated leads, a world map with numbered pins, and a two-column list of the day's other stories. Every headline and label is drawn deterministically; the illustrations are flat vector-style drawings.
 
-## The image
+## Run
 
-A single newspaper front page — "Tuesday 17 November 2026" — carrying 48 real stories from that day: 14 illustrated lead stories (the Crimean Bridge, Iran/Bahrain, the first Quad summit in Manila, Ebola in DR Congo, measles, COP31, Gaza, Nvidia, Mongolia, Serbia, Bangladesh, the An-12 crash, Mozambique, Sözcü TV), a "Where it happened" world map with numbered pins, and a numbered "Also on Tuesday 17 November" list (items 15–48). Every story happened or was first reported on Tuesday 17 November 2026; disputed items are shown as claims.
+```sh
+python3 main.py
+```
 
-## How it runs
+This writes the front page to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR/entry.png`).
 
-`main.py` (Python 3.13, standard library only) decodes `image.b64` and writes the image to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR/entry.png`). It is deterministic: run it twice and the outputs are byte-identical.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
+[Sum up 17 November's world news in one image](https://make.fun/bounty/news-image-20261117)
